@@ -1,69 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
-import Name from './Name';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
 } from "react-router-dom";
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink to="/projects">Projects</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact">Contact</NavLink>
-            </li>
-          </ul>
-        </nav>
-
+        <Navigation />
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/projects">
-            <Projects />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/projects">
+              {/* Passing 3 projects to the project page as props */}
+              <Projects projects={[
+                { title: '3Ds Max', img: '/p1.png' },
+                { title: 'E-Cycle', img: '/p2.png' },
+                { title: 'Video Animation', img: '/p3.png' }
+              ]} />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Projects() {
-  return <h2>Projects</h2>;
-}
-
-function Contact() {
-  return <h2>Contact</h2>;
 }
 
 export default App;

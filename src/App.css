@@ -1,38 +1,172 @@
-.App {
-  text-align: center;
+* {
+	box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	background-color: #4a4e69;
+	color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Styling all links */
+a {
+	text-decoration: none;
+	color: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a:hover {
+	text-decoration: underline;
 }
 
-.App-link {
-  color: #61dafb;
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: #998d99;
+	font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.PageTitle {
+	font-size: 8vw;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+p {
+	margin-bottom: 0.5rem;
+}
+
+.MainNavigation {
+	width: 100%;
+	padding: 1rem;
+	background: #998d99;
+	box-shadow: 0px 4px 22px 1px rgba(0, 0, 0, 0.05);
+	margin-bottom: 2rem;
+}
+
+/* Using flexbox for navigation */
+.MainNavigation ul {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+
+.MainNavigation ul li a.active {
+	font-weight: bold;
+}
+
+.container {
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* Using flexbox for projects, about and home pages */
+.AllProjects,
+.AboutContent,
+.HomeContent {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+.AllProjects div,
+.AboutContent div,
+.HomeContent div {
+	margin-bottom: 2rem;
+}
+
+/* Making all images responsive */
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.SingleProject {
+	margin-bottom: 2rem;
+}
+
+.SingleProject h4 {
+	text-align: center;
+}
+
+/* Simple sticky footer */
+.Footer {
+	background: #998d99;
+	width: 100%;
+	text-align: center;
+	color: #4a4e69;
+	padding: 1rem 0;
+	position: fixed;
+	bottom: 0;
+}
+
+input {
+	display: block;
+	width: 100%;
+	padding: 0.5rem 0;
+	margin-bottom: 1rem;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+	background-color: #998d99;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 0;
+	width: 100%;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+label {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+	.container {
+		max-width: 900px;
+	}
+	.PageTitle {
+		text-align: left;
+		font-size: 50px;
+	}
+
+	/* Display projects in one row and multiple columns on desktop */
+	.AllProjects {
+		flex-flow: row nowrap;
+	}
+
+	/* Display about and home content in one row and enable wrap */
+	.AboutContent,
+	.HomeContent {
+		flex-flow: row wrap;
+	}
+
+	/* Show about and home content as equal columns on desktop */
+	.AboutContent div,
+	.HomeContent div {
+		display: flex;
+		flex-direction: column;
+		flex-basis: 100%;
+		flex: 1;
+	}
+
+	.SingleProject {
+		padding: 0 0.5rem;
+	}
+
+	input,
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"] {
+		width: 50%;
+	}
 }
