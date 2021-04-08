@@ -1,7 +1,6 @@
 import './App.css';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
 } from "react-router-dom";
 import Navigation from './components/Navigation';
@@ -19,25 +18,23 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
         <div className="container">
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/projects">
-              {/* Passing 3 projects to the project page as props */}
-              <Projects projects={[
-                { title: '3Ds Max', img: '/p1.png' },
-                { title: 'E-Cycle', img: '/p2.png' },
-                { title: 'Video Animation', img: '/p3.png' }
-              ]} />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+          <Route path="/" exact>
+            {({ match }) => <Home show={match !== null} />}
+          </Route>
+          <Route path="/about">
+            {({ match }) => <About show={match !== null} />}
+          </Route>
+          <Route path="/projects">
+            {/* Passing 3 projects to the project page as props */}
+            {({ match }) => <Projects show={match !== null} projects={[
+              { title: '3Ds Max', img: '/p1.png' },
+              { title: 'E-Cycle', img: '/p2.png' },
+              { title: 'Video Animation', img: '/p3.png' }
+            ]} />}
+          </Route>
+          <Route path="/contact">
+            {({ match }) => <Contact show={match !== null} />}
+          </Route>
         </div>
         <Footer />
       </div>
